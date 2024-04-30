@@ -1,0 +1,16 @@
+.user {
+    padding: 10px;
+    display: flex;
+    width: 250px;
+    border: 1px solid gray;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+}
