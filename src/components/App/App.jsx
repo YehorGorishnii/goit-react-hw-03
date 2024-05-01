@@ -1,4 +1,3 @@
-
 import SearchBox from "../SearchBox/SearchBox";
 import { useState } from "react";
 import { nanoid } from "nanoid";
@@ -15,6 +14,12 @@ export default function App() {
 
   const [filter, setFilter] = useState("");
 
+  const addContact = (newContacts) => {
+    setContacts((prevContacts) => {
+      return [...prevContacts, newContacts ]
+    })
+  };
+
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
@@ -26,7 +31,7 @@ export default function App() {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm/>
+      <ContactForm addContact={addContact}/>
       <SearchBox value={filter} onChange={handleFilterChange} />
       <ContactList contacts={filteredContacts} />
     </div>

@@ -1,22 +1,34 @@
 import { Formik, Field, Form } from "formik";
 import css from "../ContactForm/ContactForm.module.css";
+import { useState } from "react";
 
-export default function ContactForm() {
+export default function ContactForm({addContact}) {
+  const handleNewContactSubmit = (event) => {
+    event.preventDefault()
+    addContact({
+      name: event.target.elements.name.value,
+      number: event.target.elements.number.value,
+    })
+    event.target.reset();
+  };
+
   return (
-    <Formik>
-      <Form className={css.form}>
+    
+      <form className={css.form} onSubmit={handleNewContactSubmit} >
         <div className={css.conteiner}>
           <label>Name</label>
-          <Field name="name" type="text" />
+          <input name="name" type="text" />
         </div>
 
         <div className={css.conteiner}>
           <label>Namber</label>
-          <Field name="phone" type="phone" />
+          <input name="number" type="phone" />
         </div>
 
-        <button className={css.button} type="submit">Add contact</button>
-      </Form>
-    </Formik>
+        <button  className={css.button} type="submit">
+          Add contact
+        </button>
+      </form>
+  
   );
 }
