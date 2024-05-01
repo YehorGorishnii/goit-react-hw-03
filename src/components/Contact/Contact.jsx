@@ -1,8 +1,8 @@
 import { BsFillTelephoneFill, BsFillPersonFill } from "react-icons/bs";
 import css from "../Contact/Contact.module.css";
 
-export default function ContactList({ contact }) {
-  const { name, number } = contact;
+export default function ContactList({ contact, onDelete} ) {
+  const { name, number, id } = contact;
 
   return (
     <>
@@ -17,7 +17,7 @@ export default function ContactList({ contact }) {
         </p>
       </div>
 
-      <button className={css.button}>Delete</button>
+      <button className={css.button} onClick={() => {onDelete(id)}}>Delete</button>
     </>
   );
 }
